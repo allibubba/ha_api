@@ -3,9 +3,14 @@ class Api::V1::ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.new(activity_params)
-    if @ctivity.save
-      render json: @ctivity
+    @activity = Activity.new({"operation"=>"0", "equipment_id"=>"376595269"})
+    puts "--------------------------"
+    puts @activity.valid?
+    puts "--------------------------"
+    @activity.save
+
+    if @activity.save
+      render json: @activity
     else
       render error: {error: 'invalid', message: @ctivity.errors}, status: 400 # unless @activity.valid?
     end
@@ -16,9 +21,10 @@ class Api::V1::ActivitiesController < ApplicationController
   
   private
 
-  def activity_params
-    params.require(:operation)
-    params.require(:equipment_id)
+  def allowed_params
+    params.require(:activity)
+    # params.require(:operation)
+    # params.require(:equipment_id)
   end
 
 end
