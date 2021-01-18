@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+main_switch:
+  name: kitchen main lights
+  brand: Lutron Caseta
+  protocol: proprietary
+  location: location_kitchen
+  type: Switch
+
+island_switch:
+  name: kitchen island lights
+  brand: Lutron Caseta
+  protocol: proprietary
+  location: location_kitchen
+  type: Switch
+
+under_counter_switch:
+  name: kitchen under counter lights
+  brand: Lutron Caseta
+  protocol: proprietary
+  location: location_kitchen
+  type: Switch

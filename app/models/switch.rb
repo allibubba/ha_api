@@ -1,0 +1,2 @@
+class Switch < Equipment
+end
