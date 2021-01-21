@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+require 'mqtt'
+
 MQTT_CLIENT = MQTT::Client.new(
   :host => ENV['MQTT_HOST'],
   :port => 1883,
