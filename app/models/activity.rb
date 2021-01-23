@@ -7,9 +7,9 @@ class Activity < ApplicationRecord
   include Emittable
 
   def topic
-    [self.class.name,
-     self.location.name.downcase,
-     self.equipment.name,
+    [self.class.name, 
+     self.location.name.downcase, 
+     self.equipment.name, 
      self.operation ].map(&:downcase).join('/')
   end
 end
