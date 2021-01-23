@@ -11,7 +11,7 @@ module Emittable
     begin
       MQTT_CLIENT.connect() do |c|
         c.publish('home/kitchen/temp', "49")
-        c.publish("#{self.class.name.downcase}/home/kitchen/temp", "49")
+        c.publish(self.topic, "49")
       end
     rescue MQTT::ProtocolException => error
       Rails.logger.error "MQTT failure: " + error.message

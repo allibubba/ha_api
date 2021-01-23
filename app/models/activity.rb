@@ -6,7 +6,10 @@ class Activity < ApplicationRecord
 
   include Emittable
 
-  def queue_path
-    [self.location.name.downcase, self.equipment.name, self.operation].join('/')
+  def topic
+    [self.class.name,
+     self.location.name.downcase,
+     self.equipment.name,
+     self.operation ].map(&:downcase).join('/')
   end
 end
