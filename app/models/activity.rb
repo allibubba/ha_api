@@ -8,8 +8,8 @@ class Activity < ApplicationRecord
 
   def topic
     [self.class.name, 
-     self.location.name.downcase, 
-     self.equipment.name, 
-     self.operation ].map(&:downcase).join('/')
+     self.location.name, 
+     self.equipment.safe_name, 
+     self.operation.to_s ].map(&:downcase).join('/')
   end
 end

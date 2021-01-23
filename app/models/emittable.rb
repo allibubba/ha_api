@@ -10,7 +10,6 @@ module Emittable
   def send_message_to_queue
     begin
       MQTT_CLIENT.connect() do |c|
-        c.publish('home/kitchen/temp', "49")
         c.publish(self.topic, "49")
       end
     rescue MQTT::ProtocolException => error
