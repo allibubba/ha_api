@@ -1,19 +1,91 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-
-location_kitchen:
-  name: kitchen
-  category: 0
-
-location_living_room:
-  name: living room 
-  category: 0
-
-location_porch:
+side_porch:
   name: pourch
   category: 1
 
+back_door:
+  name: back door exterior
+  category: 1
+
+kitchen:
+  name: kitchen
+  category: 0
+
+panrty:
+  name: pantry
+  category: 0
+
+back_door:
+  name: back door interior
+  category: 0
+
+foyer:
+  name: foyer
+  category: 0
+
+living_room:
+  name: living room 
+  category: 0
+
+dining_room:
+  name: dining room 
+  category: 0
+
+entryway:
+  name: front entry
+  category: 0
+
+entryway_steps:
+  name: front entry steps
+  category: 1
+
+downstairs_bathroom:
+  name: downstairs bathroom
+  category: 0
+
+downstairs_primary_bedroom:
+  name: downstairs main bedroom
+  category: 0
+
+downstairs_secondary_bedroom:
+  name: downstairs office
+  category: 0
+
+downstairs_hallway:
+  name: downstairs hallway
+  category: 0
+
+upstairs_bathroom:
+  name: upstairs bathroom
+  category: 0
+
+upstairs_primary_bedroom:
+  name: upstairs main bedroom
+  category: 0
+
+upstairs_secondary_bedroom:
+  name: upstairs kids room
+  category: 0
+
+upstairs_hallway:
+  name: upstairs hallway
+  category: 0
+
+basement_shop:
+  name: basement shop
+  category: 0
+
+basement_laundry:
+  name: laundry area
+  category: 0
+
+basement_lounge:
+  name: basement lounge
+  category: 0
+
+back_yard:
+  name: back yard
+  category: 1
+
+front_yard:
+  name: front yard
+  category: 1

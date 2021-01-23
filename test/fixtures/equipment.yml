@@ -1,0 +1,74 @@
+# switches
+main_switch:
+  name: kitchen main lights
+  brand: Lutron Caseta
+  protocol: proprietary
+  location: kitchen
+  type: Switch
+
+island_switch:
+  name: kitchen island lights
+  brand: Lutron Caseta
+  protocol: proprietary
+  location: kitchen
+  type: Switch
+
+under_counter_switch:
+  name: kitchen under counter lights
+  brand: Lutron Caseta
+  protocol: proprietary
+  location: kitchen
+  type: Switch
+
+# Appliances
+oven:
+  name: induction oven
+  brand: samsung induction oven
+  protocol: proprietary
+  location: kitchen
+  type: Appliance
+
+# Locks
+side_door_lock:
+  name: side door lock
+  brand: yale
+  protocol: zwave
+  location: entryway
+  type: Lock
+
+# Outlets
+corner_lamp:
+  name: living room corner lamp
+  brand: unknown
+  protocol: zwave
+  location: living_room
+  type: Outlet
+
+light_string:
+  name: back yard overhead light string
+  brand: unknown
+  protocol: zwave
+  location: back_yard
+  type: Outlet
+
+# Light Bulbs
+side_porch_light_1:
+  name: porch light 1
+  brand: samsung
+  protocol: zwave
+  location: side_porch
+  type: LightBulb
+
+side_porch_light_2:
+  name: porch light 2
+  brand: samsung
+  protocol: zwave
+  location: side_porch
+  type: LightBulb
+
+front_steps_light:
+  name: porch steps light
+  brand: samsung
+  protocol: zwave
+  location: entryway_steps
+  type: LightBulb

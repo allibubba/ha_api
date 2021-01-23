@@ -1,0 +1,2 @@
+class LightBulb < Equipment
+end
