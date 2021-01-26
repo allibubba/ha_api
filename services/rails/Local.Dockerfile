@@ -1,8 +1,8 @@
 FROM ruby:3.0.0
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 WORKDIR /usr/src/app
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+COPY Gemfile /usr/src/app/Gemfile
+COPY Gemfile.lock /usr/src/app/Gemfile.lock
 RUN bundle install
 COPY . /myapp
 

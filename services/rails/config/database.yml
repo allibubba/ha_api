@@ -1,15 +1,15 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
+  host: <%= ENV['DATABSE_HOST'] %>
   username: postgres
   password: password
   pool: 5
 
 development:
   <<: *default
-  database: ha_api
+  database: <%= ENV['DATABASE_NAME'] %>
 
 test:
   <<: *default
-  database: ha_api_test
+  database: <%= ENV['TEST_DATABASE_NAME'] %>
