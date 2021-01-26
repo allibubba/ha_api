@@ -2,12 +2,12 @@
 #
 # Table name: activities
 #
-#  id              :bigint           not null, primary key
-#  operation       :integer
-#  equipment_id    :bigint
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  operation_value :string           not null
+#  id           :bigint           not null, primary key
+#  event_type   :string           not null
+#  event_value  :string           not null
+#  equipment_id :bigint           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 require 'rails_helper'
 

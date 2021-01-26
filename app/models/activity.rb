@@ -2,17 +2,22 @@
 #
 # Table name: activities
 #
-#  id              :bigint           not null, primary key
-#  operation       :integer
-#  equipment_id    :bigint
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  operation_value :string           not null
+#  id           :bigint           not null, primary key
+#  event_type   :string           not null
+#  event_value  :string           not null
+#  equipment_id :bigint           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 class Activity < ApplicationRecord
   belongs_to :equipment
   validates :operation, presence: true
   validates :equipment, presence: true
+  # TODO: validate values against equipment allowed values
+  validates :event_type, presence: true
+  validates :event_value, presence: true
+
+  has_one :equipment
   has_one :location, :through => :equipment
 
   include Emittable
