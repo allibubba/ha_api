@@ -36,6 +36,7 @@ services:
       DATABASE_HOST: ha_db
       DATABASE_NAME: ${RAILS_TEST_DATABASE_NAME}
       TEST_DATABASE_NAME: ${RAILS_TEST_DATABASE_NAME}
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
     ports:
       - ${RAILS_PORT}:3000
     volumes:
