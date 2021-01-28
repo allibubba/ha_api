@@ -1,11 +1,20 @@
 use Mix.Config
 
+db_host = System.get_env("DATABASE_HOST")
+db_user = System.get_env("DATABASE_USER")
+db_password = System.get_env("DATABASE_PASSWORD")
+db_name = System.get_env("DATABASE_NAME")
+
+# postgres://postgres:postgres@db:5432/myapp_dev
+
+
 # Configure your database
 config :app, Report.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "app_dev",
-  hostname: "localhost",
+  username: db_user,
+  password: db_password,
+  database: db_name,
+  hostname: db_host,
+  # hostname: "postgres://postgres:postgres@db:5432/ha_api_test"
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

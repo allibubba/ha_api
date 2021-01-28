@@ -1,19 +1,15 @@
-# Report
+# Docker Compose
+stand all services up `docker-compose up`
 
-To start your Phoenix server:
+build all services `docker-compose up --build`
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+exec into a container `docker-compose exec <container_name> /bin/bash`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+# rails
+for a new setup, install rails in the web_accounts container
+`Rails new`
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+# phoenix
+for a new setup, install phoenix in the web_reports container
+install inside the container `mix phx.new . --module Report --database postgres --no-webpack`
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
