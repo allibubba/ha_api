@@ -20,7 +20,21 @@ services:
       - ${MQTT_ROOT_DIRECTORY}/mosquitto.conf:/mosquitto/config/mosquitto.conf
     restart: unless-stopped
 
-  web:
+  web_reports:
+    container_name: ha_api_elixer
+    build:
+      context: ${ELIXIR_ROOT_DIRECTORY}
+      target: local
+    depends_on:
+      - db
+    environment:
+      MIX_ENV: ${MIX_ENV}
+    ports:
+      - ${ELIXIR_PORT}:4000
+    volumes:
+      - ${ELIXIR_ROOT_DIRECTORY}:/usr/src/app
+
+  web_activity:
     # image: ha_api_web:${IMAGE_TAG}
     container_name: ha_api_rails
     restart: always
