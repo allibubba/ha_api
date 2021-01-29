@@ -20,7 +20,7 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     build:
       context: ${RAILS_ROOT_DIRECTORY}
-      dockerfile: Local.Dockerfile
+      dockerfile: Dockerfile
     environment:
       RAILS_ENV: ${SYSTEM_ENV}
       MQTT_HOST: mosquitto
@@ -28,7 +28,7 @@ services:
       MQTT_PASSWORD: ${MQTT_PASSWORD}
       DATABASE_USER: ${DATABASE_USER}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      DATABASE_HOST: db
+      DATABASE_HOST: ha_db
       DATABASE_NAME: ${DATABASE_NAME}
       TEST_DATABASE_NAME: ${TEST_DATABASE_NAME}
       RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
