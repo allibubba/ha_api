@@ -11,21 +11,20 @@
 #
 class Activity < ApplicationRecord
   belongs_to :equipment
-  validates :operation, presence: true
-  validates :equipment, presence: true
   # TODO: validate values against equipment allowed values
+  validates :equipment, presence: true
   validates :event_type, presence: true
   validates :event_value, presence: true
 
-  has_one :equipment
   has_one :location, :through => :equipment
 
   include Emittable
 
+  # TODO: need to decouple this
   def topic
     [self.class.name, 
      self.location.name, 
      self.equipment.safe_name, 
-     self.operation.to_s ].map(&:downcase).join('/')
+     self.event_type.to_s ].map(&:downcase).join('/')
   end
 end

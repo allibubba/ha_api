@@ -4,11 +4,6 @@ class Api::V1::ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new({"operation"=>"0", "equipment_id"=>"376595269"})
-    puts "--------------------------"
-    puts @activity.valid?
-    puts "--------------------------"
-    @activity.save
-
     if @activity.save
       render json: @activity
     else
