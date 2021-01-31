@@ -12,8 +12,12 @@ module Emittable
       MQTT_CLIENT.connect() do |c|
         c.publish(self.topic, "49")
       end
+    # NOTE: what to do with failed connection? invalidate record, push to dead letter queue?
     rescue MQTT::ProtocolException => error
-      Rails.logger.error "MQTT failure: " + error.message
+      Rails.logger.error "MQTT failure: #{error.message}" 
+    rescue Exception => e
+      Rails.logger.error "failure to publish: #{e}"
     end
   end
+
 end
