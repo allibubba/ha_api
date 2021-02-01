@@ -13,6 +13,6 @@
 #
 require 'rails_helper'
 
-RSpec.describe Switch, type: :model do
+RSpec.describe Appliance, type: :model do
   it_behaves_like 'an Equipment Class'
 end
