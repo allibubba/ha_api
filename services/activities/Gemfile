@@ -6,6 +6,7 @@ gem 'mqtt', '~> 0.4.0'
 gem 'rails', '~> 6.1.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 5.0'
+gem 'sorbet-runtime'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -18,9 +19,11 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+
 group :development, :test do
   gem 'pp', '~> 0.2.0'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
+  gem 'sorbet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
