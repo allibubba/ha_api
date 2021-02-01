@@ -11,5 +11,8 @@
 require 'rails_helper'
 
 RSpec.describe Location, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it { should define_enum_for(:category).with_values([:interior, :exterior]) }
+    it { should have_many(:equipment) }
+  end
 end
