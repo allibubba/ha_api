@@ -11,9 +11,6 @@ class Api::V1::ActivitiesController < ApplicationController
     end
   end
 
-  def update
-  end
-  
   private
 
   def allowed_params
