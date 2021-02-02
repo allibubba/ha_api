@@ -1,5 +1,17 @@
 version: "3.9"
 services:
+  dev_env:
+    container_name: dev_env
+    build:
+      context: ${DEV_DIRECTORY}
+      target: local
+    volumes:
+      - ${CONFIG_DIR}:/root/.config
+      - ${RAILS_ROOT_DIRECTORY}:/projects/web_activity
+      - ${ELIXIR_ROOT_DIRECTORY}:/projects/web_reports
+    environment:
+      MYVIMRC: /root/.config/nvim/init.vim
+
   db:
     container_name: ha_db
     image: postgres
