@@ -6,11 +6,10 @@ services:
       context: ${DEV_DIRECTORY}
       target: local
     volumes:
-      - ${CONFIG_DIR}:/root/.config
       - ${RAILS_ROOT_DIRECTORY}:/projects/web_activity
       - ${ELIXIR_ROOT_DIRECTORY}:/projects/web_reports
     environment:
-      MYVIMRC: /root/.config/nvim/init.vim
+      TERM: xterm256-color
 
   db:
     container_name: ha_db
