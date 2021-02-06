@@ -19,5 +19,4 @@ module Emittable
       Rails.logger.error "failure to publish: #{e}"
     end
   end
-
 end

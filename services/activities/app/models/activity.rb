@@ -13,12 +13,15 @@ class Activity < ApplicationRecord
   belongs_to :equipment
   # TODO: validate values against equipment allowed values
   validates :equipment, presence: true
-  validates :event_type, presence: true
-  validates :event_value, presence: true
+  validates :event_type, presence: true # // action eg. power, dim
+  validates :event_value, presence: true # // message, eg on, off, 80%
 
   has_one :location, :through => :equipment
 
   include Emittable
+
+  scope :by_equipment, ->(id) { where("equipment_id = ?", id) }
+  scope :by_protocol, ->(protocol) { self.includes(:equipment).where(equipment: {protocol: p}) }
 
   # TODO: need to decouple this
   def topic
