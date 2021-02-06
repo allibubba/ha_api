@@ -12,4 +12,7 @@
 #  updated_at  :datetime         not null
 #
 class Lock < Equipment
+  def available_events
+    {unlock: :boolean_values}
+  end
 end
