@@ -22,6 +22,7 @@ group :development, :test do
   gem 'pp', '~> 0.2.0'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'bullet'
 end
 
 group :development do
