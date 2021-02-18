@@ -13,6 +13,6 @@
 #
 class Lock < Equipment
   def available_events
-    {unlock: :boolean_values}
+    {state: %i[lock unlock]}
   end
 end

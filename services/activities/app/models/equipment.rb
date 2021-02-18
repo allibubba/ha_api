@@ -18,6 +18,10 @@ class Equipment < ApplicationRecord
   validates_presence_of :protocol
   enum protocol: { zwave: 0, zigbee: 1, wifi: 2, proprietary: 3  }
 
+  def available_events
+    raise 'not implemented'
+  end
+
   def safe_name
     self.name.gsub(' ', '_')
   end

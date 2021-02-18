@@ -14,24 +14,46 @@ require 'rails_helper'
 RSpec.describe Activity, type: :model do
   fixtures :equipment
 
-  let(:activity) do
-    Activity.new({ equipment: equipment(:main_switch),
-    event_type: :foo, event_value: :bar, })
+  let(:equipment_instance) do
+    equipment(:side_door_lock)
+  end
+
+  subject(:activity_instance) do
+    Activity.new({
+      equipment: equipment_instance, 
+      event_type: :state, 
+      event_value: :unlock
+    })
   end
 
   describe 'associations' do
-    it { should belong_to(:equipment) }
-  end
-
-  describe 'validations' do
-    it { should validate_presence_of(:equipment) }
-    it { should validate_presence_of(:event_type) }
-    it { should validate_presence_of(:event_value) }
-  end
-
-  context 'valid model' do 
-    it 'validates' do
-      expect(activity).to be_valid
+    it { should be_valid }
+    it 'belongs' do
+      pp  '+++++++++++++++++++++++++'
+      pp subject.equipment
+      pp  '+++++++++++++++++++++++++'
+      should belong_to(:equipment).class_name('Equipment')
     end
   end
+
+  # describe 'validate actions' do
+  #   before(:each) do
+  #     @equipment_dbl = Equipment.new()
+  #     allow(@equipment_dbl).to receive(:available_events) { {foo: %i[a b]} }
+  #   end
+
+  #   context 'when event is avaialble' do 
+  #     it '.ensure_equipment_action_availability' do
+  #       activity = Activity.new({ equipment: @equipment_dbl, event_type: :foo, event_value: :a })
+  #       expect(activity).to be_valid
+  #     end
+  #   end
+
+  #   context 'when event is unavaialble' do 
+  #     it '.ensure_equipment_action_value_availability' do
+  #       activity = Activity.new({ equipment: @equipment_dbl, event_type: :foo, event_value: :c })
+  #       expect(activity).to_not be_valid
+  #     end
+  #   end
+  # end
 end
