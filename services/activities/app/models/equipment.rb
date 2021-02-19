@@ -13,6 +13,7 @@
 #
 class Equipment < ApplicationRecord
   belongs_to :location
+  has_many :activities
   validates_presence_of :type
   validates_presence_of :name
   validates_presence_of :protocol

@@ -10,11 +10,12 @@
 #  updated_at   :datetime         not null
 #
 class Activity < ApplicationRecord
-  belongs_to :equipment
+  belongs_to :equipment, optional: false
   validates :equipment, presence: true
   validates :event_type, presence: true # // action eg. power, dim, lock
   validates :event_value, presence: true # // message, eg on, off, 80%
   # validate :ensure_equipment_action_availability
+  validate :perfecto
   # validate :ensure_equipment_action_value_availability
 
   has_one :location, :through => :equipment
@@ -23,6 +24,12 @@ class Activity < ApplicationRecord
 
   scope :by_equipment, ->(id) { where("equipment_id = ?", id) }
   scope :by_protocol, ->(protocol) { self.includes(:equipment).where(equipment: {protocol: p}) }
+
+  def perfecto
+    pp self.equipment
+    return if self.equipment.id
+    errors.add(:equipment, "perfecto failed")
+  end
   
   def ensure_equipment_action_availability
     if equipment.available_events.keys.exclude? event_type.to_sym

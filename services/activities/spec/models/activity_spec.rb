@@ -18,20 +18,35 @@ RSpec.describe Activity, type: :model do
     equipment(:side_door_lock)
   end
 
-  subject(:activity_instance) do
+  subject do
     Activity.new({
-      equipment: equipment_instance, 
+      # equipment: equipment_instance, 
+      equipment_id: 5,
       event_type: :state, 
       event_value: :unlock
     })
   end
 
   describe 'associations' do
-    it { should be_valid }
+
+    subject do
+      Activity.create({
+        # equipment: equipment_instance, 
+        equipment_id: 5,
+        event_type: :state, 
+        event_value: :unlock
+      })
+    end
+
+
+    # it { should be_valid }
+
     it 'belongs' do
-      pp  '+++++++++++++++++++++++++'
+      pp '..................'
       pp subject.equipment
-      pp  '+++++++++++++++++++++++++'
+      pp subject.ensure_equipment_action_availability
+      pp '..................'
+
       should belong_to(:equipment).class_name('Equipment')
     end
   end
