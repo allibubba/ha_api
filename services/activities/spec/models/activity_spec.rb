@@ -20,8 +20,7 @@ RSpec.describe Activity, type: :model do
 
   subject do
     Activity.new({
-      # equipment: equipment_instance, 
-      equipment_id: 5,
+      equipment: equipment_instance, 
       event_type: :state, 
       event_value: :unlock
     })
@@ -31,44 +30,36 @@ RSpec.describe Activity, type: :model do
 
     subject do
       Activity.create({
-        # equipment: equipment_instance, 
-        equipment_id: 5,
+        equipment: equipment_instance, 
         event_type: :state, 
         event_value: :unlock
       })
     end
 
-
-    # it { should be_valid }
-
+    it { should be_valid }
     it 'belongs' do
-      pp '..................'
-      pp subject.equipment
-      pp subject.ensure_equipment_action_availability
-      pp '..................'
-
-      should belong_to(:equipment).class_name('Equipment')
+      should belong_to(:equipment)
     end
   end
 
-  # describe 'validate actions' do
-  #   before(:each) do
-  #     @equipment_dbl = Equipment.new()
-  #     allow(@equipment_dbl).to receive(:available_events) { {foo: %i[a b]} }
-  #   end
+  describe 'validate actions' do
+    before(:each) do
+      @equipment_dbl = Equipment.new()
+      allow(@equipment_dbl).to receive(:available_events) { {foo: %i[a b]} }
+    end
 
-  #   context 'when event is avaialble' do 
-  #     it '.ensure_equipment_action_availability' do
-  #       activity = Activity.new({ equipment: @equipment_dbl, event_type: :foo, event_value: :a })
-  #       expect(activity).to be_valid
-  #     end
-  #   end
+    context 'when event is avaialble' do 
+      it '.ensure_equipment_action_availability' do
+        activity = Activity.new({ equipment: @equipment_dbl, event_type: :foo, event_value: :a })
+        expect(activity).to be_valid
+      end
+    end
 
-  #   context 'when event is unavaialble' do 
-  #     it '.ensure_equipment_action_value_availability' do
-  #       activity = Activity.new({ equipment: @equipment_dbl, event_type: :foo, event_value: :c })
-  #       expect(activity).to_not be_valid
-  #     end
-  #   end
-  # end
+    context 'when event is unavaialble' do 
+      it '.ensure_equipment_action_value_availability' do
+        activity = Activity.new({ equipment: @equipment_dbl, event_type: :foo, event_value: :c })
+        expect(activity).to_not be_valid
+      end
+    end
+  end
 end
