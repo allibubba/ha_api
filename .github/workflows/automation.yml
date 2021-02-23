@@ -1,0 +1,54 @@
+name: BeanCounter Workflow
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+    - name: Install gems
+      working-directory: services/activities
+      run: bundle install
+
+    - name: Rubocop
+      working-directory: services/activities
+      run: rubocop spec
+
+    - name: Install db client
+      run: |
+        sudo apt-get -yqq install libpq-dev
+
+    - name: Build app
+      working-directory: services/activities
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        PGPASSWORD: postgres
+        RAILS_ENV: test
+      run: |
+        bin/rails db:setup
+
+    - name: Run tests
+      working-directory: services/activities
+      env:
+        DATABASE_USER: postgres
+        DATABASE_PASSWORD: postgres
+        DATABASE_NAME: db
+      run: bundle exec rspec
