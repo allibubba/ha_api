@@ -12,4 +12,4 @@ development:
 
 test:
   <<: *default
-  database: <%= ENV['TEST_DATABASE_NAME'] %>
+  database: <%= ENV['DATABASE_NAME'] %>_test
