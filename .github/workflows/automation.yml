@@ -27,9 +27,9 @@ jobs:
       working-directory: services/activities
       run: bundle install
 
-    - name: Rubocop
-      working-directory: services/activities
-      run: rubocop spec
+    # - name: Rubocop
+    #   working-directory: services/activities
+    #   run: rubocop spec
 
     - name: Install db client
       run: |
