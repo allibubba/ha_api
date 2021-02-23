@@ -1,22 +1,21 @@
 class Api::V1::ActivitiesController < ApplicationController
   def index
+    # TODO: filters TBD
+    render json: Activity.all
   end
 
   def create
-    @activity = Activity.new({"operation"=>"0", "equipment_id"=>"376595269"})
-    if @activity.save
-      render json: @activity
+    activity = Activity.new(activity_params)
+    if activity.save
+      render json: activity
     else
-      render error: {error: 'invalid', message: @ctivity.errors}, status: 400 # unless @activity.valid?
+      render json: {status: 400, message: activity.errors.full_messages}
     end
   end
 
   private
 
-  def allowed_params
-    params.require(:activity)
-    # params.require(:operation)
-    # params.require(:equipment_id)
+  def activity_params
+    params.require(:activity).permit(:event_type, :event_value, :equipment_id)
   end
-
 end
